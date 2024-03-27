@@ -22,7 +22,41 @@ namespace Code_First.Controllers
 
 			return View();
 		}
+		public IActionResult InsertData()
+		{
+			// veri ekleyelim 
 
+
+			_context.HumanResources.Add(new DMO.HumanResource()
+			{
+
+				Lastname = "Erdoðan",
+				Name = "Ali"
+			});
+			_context.HumanResources.Add(new DMO.HumanResource()
+			{
+				
+				Lastname = "Alp",
+				Name = "Ayþe"
+			});
+			_context.HumanResources.Add(new DMO.HumanResource()
+			{
+
+				Lastname = "Ýmaroðlu",
+				Name = "Ekin"
+			});
+			_context.HumanResources.Add(new DMO.HumanResource()
+			{
+
+				Lastname = "Soyer",
+				Name = "Mert"
+			});
+
+			// veri tabanýna ekleyelim 
+
+			_context.SaveChanges();
+			return View();
+		}
 		public IActionResult Privacy()
 		{
 			return View();

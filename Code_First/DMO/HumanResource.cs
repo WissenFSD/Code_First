@@ -17,5 +17,7 @@ namespace Code_First.DMO
         [MaxLength(20)]
         // ? işareti alanın nullable olmasını sağlar
         public string? Lastname { get; set; }
+
+
     }
 }
