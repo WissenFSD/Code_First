@@ -19,5 +19,7 @@ namespace Code_First.DMO
         public string? Lastname { get; set; }
 
 
+
+
     }
 }

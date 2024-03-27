@@ -5,23 +5,44 @@ using System.Diagnostics;
 
 namespace Code_First.Controllers
 {
+
+	// Ýlk çalýþtýrýlacak komut
+	// dotnet ef migrations add "initial db ops" --project Code_First
+
+	// Ýkinci çalýþtýrýlacak komut
+	// dotnet ef database update --project Code_First
+
+
+	// dotnet ef hatasý alýyorsanýz, aþaðýdaki komutu uygulayýn
+
+	// Versionu kendi dotnet versionuna göre yazýnýz.
+	//dotnet tool install --global dotnet-ef --version 8.*
+
+
+
 	public class HomeController : Controller
 	{
 
 		public DepartmentContext _context;
 		public HomeController(DepartmentContext context)
 		{
-		
 			_context = context;
 		}
-
 		public IActionResult Index()
 		{
 			//sjh
 
+			// soy adý s ile baþlayan  kullanýcý 
+
+			var employee = _context.HumanResources.Where(s => s.Lastname.StartsWith("S")).FirstOrDefault();
+
 
 			return View();
 		}
+		// Kayýt eklemek için browser üzerinden bu action çalýþtýrýlmalýdýr.
+
+
+
 		public IActionResult InsertData()
 		{
 			// veri ekleyelim 
@@ -35,7 +56,7 @@ namespace Code_First.Controllers
 			});
 			_context.HumanResources.Add(new DMO.HumanResource()
 			{
-				
+
 				Lastname = "Alp",
 				Name = "Ayþe"
 			});
@@ -53,6 +74,9 @@ namespace Code_First.Controllers
 			});
 
 			// veri tabanýna ekleyelim 
+
+
+			// SaveChange metodu : Eklenen kayýtlarýn  database'e kaydedilmesini saðlar.
 
 			_context.SaveChanges();
 			return View();
